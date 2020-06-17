@@ -41,7 +41,9 @@ const GETPROJECTURL ='https://project.cogether.me/api/project/read/'
 const server = http.createServer(app); 
 const wss = new WebSocket.Server({ server: server, 'Access-Control-Allow-Origin': '*' })
 
-server.listen(9001);
+const port = process.env.PORT || 9001
+
+server.listen(port);
 
 // transforms reactTemplate to sandpack
 function getFile(content) {
@@ -75,6 +77,10 @@ function transformJson(content) {
     }
     return dic;
 }
+
+app.get('/',async(req,res)=>{
+    res.send('here');
+})
 
 app.get('/getFromShareDB/:id', async (req, res) => {
     // gets project details from project backend
