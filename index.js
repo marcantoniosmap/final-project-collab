@@ -39,7 +39,7 @@ const GETPROJECTURL ='https://project.cogether.me/api/project/read/'
 
 // const share = new ShareDB({db}); // insert ShareDBMingoMemory later
 const server = http.createServer(app); 
-const wss = new WebSocket.Server({ server: server, origins: '*:*' })
+const wss = new WebSocket.Server({ server: server, allowed_origins: '*' })
 
 server.listen(9001);
 
