@@ -110,16 +110,6 @@ var new_dic = transformJson(temp_json[0]);
 
 
 
-
-
-
-
-
-
-
-
-
-
 app.get('/',async (req,res)=>{
     const anjeng = await db.getCollection('project',function(err,collection){
         try{
