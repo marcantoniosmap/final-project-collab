@@ -11,10 +11,11 @@ const cors= require('cors');
 
 app.use(express.json());
 app.use(cors());
+dotenv.config();
 
 const mongodb = require('mongodb');
 const db = require('sharedb-mongo')({mongo: function(callback) {
-    mongodb.connect('', { useUnifiedTopology: true, }, callback);
+    mongodb.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, }, callback);
 }});
 
 const share = new ShareDB({ db });
@@ -23,7 +24,6 @@ const WebSocket = require('ws');
 const WebSocketJSONStream = require('@teamwork/websocket-json-stream');
 // const ShareDBMingoMemory = require('sharedb-mingo-memory');
 
-dotenv.config();
 
 // temporary react base template for sharedb
 const fs = require('fs');
