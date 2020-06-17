@@ -38,7 +38,9 @@ const GETPROJECTURL ='https://project.cogether.me/api/project/read/'
 // const share = new ShareDB({db}); // insert ShareDBMingoMemory later
 const server = http.createServer(app); const wss = new WebSocket.Server({ server: server })
 
-server.listen(9001);
+const port = process.env.PORT || 9000
+
+server.listen(port);
 
 function getFile(content) {
     const dic = {};
