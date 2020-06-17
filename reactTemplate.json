@@ -1,0 +1,32 @@
+  [
+    {
+      "_id": "5ed8535915c60d0262f1254e",
+      "filename": "/package.json",
+      "type": "file",
+      "code": "{\r\n    \"name\": \"react\",\r\n    \"version\": \"1.0.0\",\r\n    \"description\": \"React example starter project\",\r\n    \"keywords\": [\r\n      \"react\",\r\n      \"starter\"\r\n    ],\r\n    \"main\": \"/index.js\",\r\n    \"dependencies\": {\r\n      \"react\": \"16.12.0\",\r\n      \"react-dom\": \"16.12.0\",\r\n      \"react-scripts\": \"3.0.1\"\r\n    },\r\n    \"devDependencies\": {\r\n      \"typescript\": \"3.8.3\"\r\n    },\r\n    \"browserslist\": [\r\n      \">0.2%\",\r\n      \"not dead\",\r\n      \"not ie <= 11\",\r\n      \"not op_mini all\"\r\n    ]\r\n  }"
+    },
+    {
+      "_id": "5ed8535915c60d0262f1254f",
+      "filename": "/src/index.js",
+      "type": "file",
+      "code": "import React from \"react\";\r\nimport { render } from \"react-dom\";\r\nimport './stylesheet/style.css'\r\n\r\nimport { UserList } from './components/UserList.js'\r\n\r\nconst getUrl = userCount => `https://randomuser.me/api/?results=${userCount}`;\r\n\r\nfunction App() {\r\n  const [userCount, setUserCount] = React.useState(5);\r\n  const [users, setUsers] = React.useState([]);\r\n\r\n  React.useEffect(() => {\r\n    fetch(getUrl(userCount))\r\n      .then((res) => res.json())\r\n      .then((data) => {\r\n        setUsers(data.results)\r\n      });\r\n  }, [userCount])\r\n\r\n\r\n\r\n  return (\r\n    <div className=\"app\">\r\n      <h1 className=\"title\">Hello from React App</h1>\r\n      <button type=\"button\" onClick={() => setUserCount(userCount + 1)}>Get more users</button>\r\n      <UserList users={users}/>\r\n    </div>\r\n  );\r\n}\r\n\r\nrender(<App />, document.getElementById(\"react-app\"));"
+    },
+    {
+      "_id": "5ed8535915c60d0262f12550",
+      "filename": "/public/index.html",
+      "type": "file",
+      "code": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"utf-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\r\n  <title>App</title>\r\n</head>\r\n<body>\r\n  <noscript>You need to enable JavaScript to run this app.</noscript>\r\n  <div id=\"react-app\"></div>\r\n</body>\r\n</html>"
+    },
+    {
+      "_id": "5ed8535915c60d0262f12551",
+      "filename": "/src/components/UserList.js",
+      "type": "file",
+      "code": "import React from \"react\";\r\n      \r\nfunction UserList({ users }) {\r\n  return (\r\n    <div style={{ background: '#eee', padding: 5, fontSize: '18px' }}>\r\n      <p style={{marginBottom: 20 }}>Hello from the child component.</p>\r\n      <p>Fetched <b>{users.length}</b> users from API:</p>\r\n      <ul>\r\n      {users.map((user) => (\r\n        <li key={user.email}>\r\n          <div style={{display: 'flex', alignItems: \"center\", height: 40 }}>\r\n            <p style={{display: 'inline-block' }}>{user.name.first} {user.name.last}</p>\r\n            <img style={{ width: 30, marginLeft: 10 }} src={user.picture.thumbnail} alt=\"User profile\" />\r\n          </div>\r\n        </li>\r\n        )\r\n      )}\r\n      </ul>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { UserList }"
+    },
+    {
+      "_id": "5ed8535915c60d0262f12552",
+      "filename": "/src/stylesheet/style.css",
+      "type": "file",
+      "code": "body, h1, h2, h3, p {\r\n    margin: 0;\r\n  }\r\n  .app > * {\r\n    margin-bottom: 10px;\r\n  }\r\n  .title {\r\n    color: #4e486c;\r\n  }\r\n  button {\r\n    width: 100%;\r\n    background-color: #4e486c;\r\n    font-weight: bold;\r\n    color: white;\r\n    padding: 15px 32px;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n  }"
+    }
+  ]
